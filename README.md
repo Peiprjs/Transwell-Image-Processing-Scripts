@@ -1,4 +1,5 @@
 # Transwell Image Processing Scripts
+[![DOI](https://zenodo.org/badge/1272666693.svg)](https://doi.org/10.5281/zenodo.20741673)
 
 ## Description
 This repository contains the scripts used for the automated processing, compositing, and visualization of transwell microscopy images from my Bachelor Thesis. 
