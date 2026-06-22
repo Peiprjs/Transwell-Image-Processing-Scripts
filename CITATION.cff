@@ -1,0 +1,11 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Roca Cugat"
+  given-names: "Mar"
+orcid: "https://orcid.org/0000-0001-8796-8396"
+title: "Peiprjs/Transwell-Image-Processing-Scripts"
+version: v1
+date-released: 2026-06-18
+doi: 10.5281/zenodo.20741673
+url: "https://github.com/Peiprjs/Transwell-Image-Processing-Scripts"
