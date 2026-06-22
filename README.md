@@ -5,7 +5,7 @@
 This repository contains the scripts used for the automated processing, compositing, and visualization of transwell microscopy images from my Bachelor Thesis. 
 
 ## Repository Overview
-The repository is structured into three modules:
+The repository is structured into three and a half modules:
 
 * **ImageJ script/Image_Processing_V1.ijm**: An ImageJ macro that automates the batch processing of subdirectories. It locates DAPI, ZO1, and OCCL channel images, applies background subtraction and contrast enhancement, and merges them into a multi-channel composite TIFF and PNG (`Merged_Composite.png`).
 * **Image grid maker/image_merger.py**: A Python script that searches within a structured directory hierarchy to locate images and stitches them into a 2x2 composite grid.
