@@ -54,9 +54,12 @@ def process_finals_directories(base_directory, separator_width=20):
                     if row > max_row:
                         max_row = row
                 
-                post_row = max_row + 1
-                layout['post'] = (post_row, 0)
-                max_row = post_row
+                post_num = max(numbered_images.keys()) + 1
+                post_row = post_num // 2
+                post_col = 1 if post_num % 2 != 0 else 0
+                layout['post'] = (post_row, post_col)
+                if post_row > max_row:
+                    max_row = post_row
             
             col_widths = {0: 0, 1: 0}
             row_heights = {r: 0 for r in range(max_row + 1)}
