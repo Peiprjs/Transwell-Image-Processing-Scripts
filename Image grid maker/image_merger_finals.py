@@ -79,7 +79,7 @@ def process_finals_directories(base_directory, separator_width=20):
                 y = sum(row_heights[i] + separator_width for i in range(r))
                 composite.paste(img, (x, y))
                 
-            output_filename = "Finals_Merged.png"
+            output_filename = f"{finals_dir.parent.name}.png"
             output_path = finals_dir / output_filename
             composite.save(output_path)
             
