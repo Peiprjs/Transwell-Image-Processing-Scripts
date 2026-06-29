@@ -1,6 +1,33 @@
 import os
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
+
+def add_label(img, letter):
+    img = img.convert("RGB")
+    draw = ImageDraw.Draw(img)
+    square_size = 50
+    draw.rectangle([0, 0, square_size, square_size], fill=(30, 30, 30))
+    font = None
+    for font_name in ["arial.ttf", "Arial.ttf", "DejaVuSans.ttf", "FreeSans.ttf", "LiberationSans-Regular.ttf"]:
+        try:
+            font = ImageFont.truetype(font_name, 36)
+            break
+        except:
+            pass
+    if font is None:
+        font = ImageFont.load_default()
+        
+    try:
+        bbox = draw.textbbox((0, 0), letter, font=font)
+        text_w = bbox[2] - bbox[0]
+        text_h = bbox[3] - bbox[1]
+        x = (square_size - text_w) / 2 - bbox[0]
+        y = (square_size - text_h) / 2 - bbox[1]
+    except AttributeError:
+        x, y = 15, 5
+        
+    draw.text((x, y), letter, fill="white", font=font)
+    return img
 
 def create_2x2_composites(base_directory, separator_width=20):
     base_path = Path(base_directory)
@@ -39,10 +66,10 @@ def create_2x2_composites(base_directory, separator_width=20):
 
                 if all(p.exists() for p in [post_img_path, dapi_img_path, ab_img_path]):
                     try:
-                        pre_img = Image.open(pre_img_path)
-                        post_img = Image.open(post_img_path)
-                        dapi_img = Image.open(dapi_img_path)
-                        ab_img = Image.open(ab_img_path)
+                        pre_img = add_label(Image.open(pre_img_path), 'a')
+                        post_img = add_label(Image.open(post_img_path), 'b')
+                        dapi_img = add_label(Image.open(dapi_img_path), 'c')
+                        ab_img = add_label(Image.open(ab_img_path), 'd')
 
                         col1_width = max(pre_img.width, dapi_img.width)
                         col2_width = max(post_img.width, ab_img.width)
