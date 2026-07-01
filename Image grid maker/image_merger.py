@@ -53,16 +53,18 @@ def create_2x2_composites(base_directory, separator_width=20):
                         print(f"  -> Missing: {d.name}")
                 continue
 
-            png_files = list(pre_dir.glob("*.[pP][nN][gG]"))
+            target_filenames = ["Merged_Composite.png", "Merged_Occludin.png", "Merged_ZO1.png"]
+            png_files = [pre_dir / f for f in target_filenames if (pre_dir / f).exists()]
 
-            print(f"Checking {pre_dir}... Found {len(png_files)} PNG files.")
+            print(f"Checking {pre_dir}... Found {len(png_files)} of {len(target_filenames)} target image files.")
 
             for pre_img_path in png_files:
                 img_name = pre_img_path.name
-
                 post_img_path = post_dir / img_name
                 dapi_img_path = dapi_dir / img_name
                 ab_img_path = ab_dir / img_name
+
+                print(all(p.exists() for p in [post_img_path, dapi_img_path, ab_img_path]))
 
                 if all(p.exists() for p in [post_img_path, dapi_img_path, ab_img_path]):
                     try:

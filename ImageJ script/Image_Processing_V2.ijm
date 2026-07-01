@@ -39,13 +39,13 @@ function processSubfolder(subDir) {
 
     for (j = 0; j < fileList.length; j++) {
         fileName = fileList[j];
-        if (indexOf(fileName, "DAPI") >= 0) {
+        if (indexOf(fileName, "DAPI.tiff") >= 0) {
             dapiFile = subDir + fileName;
             dapiName = fileName;
-        } else if (indexOf(fileName, "ZO1") >= 0) {
+        } else if (indexOf(fileName, "ZO1.tiff") >= 0) {
             zo1File = subDir + fileName;
             zo1Name = fileName;
-        } else if (indexOf(fileName, "OCCL") >= 0) {
+        } else if (indexOf(fileName, "OCCL.tiff") >= 0) {
             occlFile = subDir + fileName;
             occlName = fileName;
         }
